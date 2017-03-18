@@ -3,6 +3,7 @@
 from flask import Flask, request, Response
 
 from cs.compose import DummyHTMLComposer
+from cs.decorator import allow_cors
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ def ping():
 
 
 @app.route("/compose", methods=["POST"])
+@allow_cors
 def compose():
     router = {
         "dummy": DummyHTMLComposer,
@@ -23,4 +25,4 @@ def compose():
         return Response(html)
     composer = handler(html)
     prettify = composer.compose()
-    return Response(prettify)
+    return prettify
