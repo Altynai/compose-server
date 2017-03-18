@@ -1,4 +1,4 @@
 Flask==0.12
 beautifulsoup4==4.5.3
 lxml==3.7.3
-
+pynliner==0.8.0
